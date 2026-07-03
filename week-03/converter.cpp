@@ -1,3 +1,8 @@
+// Changes to make:
+// 1. Make it clear which option is converted to which option
+// 2. Add a loop to continue running the program until the user quits
+
+
 #include <iostream>
 #include <string>
 
