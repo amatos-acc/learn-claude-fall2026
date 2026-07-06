@@ -9,6 +9,7 @@ void display_menu() {
 	cout << "2. Length" << "\n";
 	cout << "3. Mass" << "\n";
 	cout << "4. Speed" << "\n";
+	cout << "5. Quit" << "\n";
 	cout << "\n";
 	cout << "Which category do you pick (1-4): "; 
 }
@@ -59,6 +60,31 @@ string get_input() {
 	getline(cin, input);
 	return input;
 }
+
+string get_unit_name(string category, string number) {
+	if (category == "1") {
+		if (number == "1") {return "Celsius";}
+		else if (number == "2") {return "Fahrenheit";}
+		else {return "Kelvin";}
+	} else if (category == "2") {
+		if (number == "1") {return "Meters";}
+		else if (number == "2") {return "Kilometers";}
+		else if (number == "3") {return "Miles";}
+		else if (number == "4") {return "Feet";}
+		else if (number == "5") {return "Inches";}
+		else {return "Centimeters";}
+	} else if (category == "3") {
+		if (number == "1") {return "Kilograms";}
+		else if (number == "2") {return "Grams";}
+		else if (number == "3") {return "Pounds";}
+		else {return "Ounces";}
+	} else {
+		if (number == "1") {return "Meters Per Second";}
+		else if (number == "2") {return "Kilometers Per Hour";}
+		else if (number == "3") {return "Miles Per Hour";}
+		else {return "Knots";}
+	}
+}		
 
 float convert_temperature(float value, string from, string to) {
 	if (from == "1") {
@@ -171,56 +197,68 @@ float convert_speed(float value, string from, string to) {
 }
 
 int main() {
-	display_menu();
-	string result = get_input();
+	while (true) {
+		display_menu();
+		string result = get_input();
 	
-	if (result == "1") {
-		cout << "Enter the value to convert: ";
-		float value = stof(get_input());		
+		if (result == "1") {
+			cout << "Enter the value to convert: ";
+			float value = stof(get_input());		
 
-		display_temperature_menu();
-		string from = get_input();
+			display_temperature_menu();
+			string from = get_input();
 
-		display_temperature_menu();
-		string to = get_input();
-
-		cout << "Result: " << convert_temperature(value, from, to) << endl;
-	} else if (result == "2") {
-		cout << "Enter the value to convert: ";
-                float value = stof(get_input());
+			display_temperature_menu();
+			string to = get_input();
+		
+			cout << "Converting " << value << " " << get_unit_name(result, from) << " to " << get_unit_name(result,
+  to) << endl;
+			cout << "Result: " << convert_temperature(value, from, to) << endl;
+		} else if (result == "2") {
+			cout << "Enter the value to convert: ";
+                	float value = stof(get_input());
  
-                display_length_menu();
-                string from = get_input();
+                	display_length_menu();
+                	string from = get_input();
 
-                display_length_menu();
-                string to = get_input();
+                	display_length_menu();
+                	string to = get_input();
 
-                cout << "Result: " << convert_length(value, from, to) << endl;
-	} else if (result == "3") { 
-                cout << "Enter the value to convert: ";
-                float value = stof(get_input());
+			cout << "Converting " << value << " " << get_unit_name(result, from) << " to " << get_unit_name(result,
+  to) << endl;
+                	cout << "Result: " << convert_length(value, from, to) << endl;
+		} else if (result == "3") { 
+                	cout << "Enter the value to convert: ";
+                	float value = stof(get_input());
                 
-                display_mass_menu();
-                string from = get_input();
+                	display_mass_menu();
+                	string from = get_input();
                 
-                display_mass_menu();
-                string to = get_input();
+                	display_mass_menu();
+                	string to = get_input();
                 
-                cout << "Result: " << convert_mass(value, from, to) << endl;
-	} else if (result == "4") {
-		cout << "Enter the value to convert: ";
-                float value = stof(get_input());
+			cout << "Converting " << value << " " << get_unit_name(result, from) << " to " << get_unit_name(result,
+  to) << endl;
+               		cout << "Result: " << convert_mass(value, from, to) << endl;
+		} else if (result == "4") {
+			cout << "Enter the value to convert: ";
+                	float value = stof(get_input());
                 
-                display_speed_menu();
-                string from = get_input();
+                	display_speed_menu();
+                	string from = get_input();
                 
-                display_speed_menu();
-                string to = get_input();
+                	display_speed_menu();
+                	string to = get_input();
                 
-                cout << "Result: " << convert_speed(value, from, to) << endl;
-	} else {
-		cout << "Invalid choice. Please enter 1, 2, 3, or 4." << endl;
+			cout << "Converting " << value << " " << get_unit_name(result, from) << " to " << get_unit_name(result,
+  to) << endl;
+                	cout << "Result: " << convert_speed(value, from, to) << endl;
+		} else if (result == "5") {
+			cout << "Goodbye." << endl;
+			break;
+		} else {
+			cout << "Invalid choice. Please enter 1-5." << endl;
+		}
 	}
-
 	return 0;
 }
