@@ -11,7 +11,7 @@ public class Library {
 		books.add(book);
 	}
 	
-	public void printBook() {
+	public void printBooks() {
 		for (Book book : books) {
 			System.out.println("Title: " + book.getTitle() + " | " + "Author: " + book.getAuthor() + " | " + "Genre: " + book.getGenre() + " | " + "Pages: " + book.getNumPages());
 		}

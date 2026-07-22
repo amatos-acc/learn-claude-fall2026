@@ -6,7 +6,7 @@ public class Main {
 		library.addBook(new Book("Whispers in the Wallpaper", "Eleanor Vance-Trench", "Domestic Thriller", 418));		
 		library.addBook(new Book("The Goblet of Mild Inconvenience", "Bartholomew Fizz", "Low-Stakes Fantasy", 205));
 		
-		library.printBook();
+		library.printBooks();
 	}
 }
 
